@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "mymusic5ba17336": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
