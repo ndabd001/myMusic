@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "mymusic5ba17336": {}
+      },
+      "function": {
+        "music": {
+          "deploymentBucketName": "amplify-amplify21a67382986e4-staging-225812-deployment",
+          "s3Key": "amplify-builds/music-79473171624572686b6b-build.zip"
+        }
       }
     }
   }

@@ -1,0 +1,42 @@
+{
+    "paths": [
+        {
+            "name": "/music",
+            "lambdaFunction": "music",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            },
+            "policyResourceName": "/music"
+        }
+    ],
+    "resourceName": "musicapi",
+    "apiName": "musicapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "music"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-amplify21a67382986e4-staging-225812-authRole",
+        "unAuthRoleName": "amplify-amplify21a67382986e4-staging-225812-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "music",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

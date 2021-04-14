@@ -3,6 +3,8 @@ import {Auth} from 'aws-amplify'
 import { Form, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 
+//below we take advantage of the neumorphism technique to create a soothing/welcoming front page/sign in page
+//the colors can be changed but it is reccomended to keep form and background closely colored and neutral tones
 
 export class CustomSignIn extends Component {
   constructor(props) {

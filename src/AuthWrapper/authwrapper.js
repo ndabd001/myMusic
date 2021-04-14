@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import Home from '../components/home'
 import {CustomSignIn} from '../components/signin'
 
+//this authwrapper serves as a routing component to direct client view depending on authentication status
+//if signed in direct the client to the home page, if not direct the user to a custom built sign in page
+
 class AuthWrapper extends Component {
     constructor(props) {
       super(props)
