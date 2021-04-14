@@ -14,14 +14,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #7a7257 ;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(5px + 2vmin);
+  color: #CFD8DC;
 }
 
 .App-link {
@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.signin{
+  width: 18rem;
+  padding: 10%;
+  margin: 1rem;
+  text-align: left;
+  border-radius: 59px;
+  background: #7a7257;
+  box-shadow:  24px 24px 48px #645d47,
+               -24px -24px 48px #908767;
+  }

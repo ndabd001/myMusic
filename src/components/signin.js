@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import {Auth} from 'aws-amplify'
+import { Form, Button } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 export class CustomSignIn extends Component {
   constructor(props) {
@@ -51,51 +54,48 @@ export class CustomSignIn extends Component {
 
   render() {
     return (
-      <div className="mx-auto w-full max-w-xs">
-        <div className="login-form">
+        <div >
           {this._validAuthStates.includes(this.props.authState) && (
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={this.handleFormSubmission}>
-              <div className="mb-4">
-                <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="username">
-                  Username
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  key="username"
-                  name="username"
-                  onChange={this.handleInputChange}
-                  type="text"
-                  placeholder="Username"
-                />
-              </div>
-              <div className="mb-6">
-                <label className="block text-grey-darker text-sm font-bold mb-2" htmlFor="password">
-                  Password
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
-                  key="password"
-                  name="password"
-                  onChange={this.handleInputChange}
-                  type="password"
-                  placeholder="******************"
-                />
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-indigo-400 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                  onClick={this.handleFormSubmission}
+            <Form className="signin" onSubmit={this.handleFormSubmission}>
+
+                <Form.Group >
+                    <Form.Label htmlFor="username">
+                    Username
+                    </Form.Label>
+                    <Form.Control 
+                        type="email" 
+                        placeholder="Enter username"
+                        onChange={this.handleInputChange} 
+                        id="username"
+                        key="username"
+                        name="username"
+                    />
+                </Form.Group>
+
+                <Form.Group >
+                    <Form.Label>
+                    Password
+                    </Form.Label>
+                    <Form.Control
+                    id="password"
+                    key="password"
+                    name="password"
+                    onChange={this.handleInputChange}
+                    type="password"
+                    placeholder="********"
+                    />
+                </Form.Group>
+                
+                <Button
+                    variant="primary"
+                    type="submit"
+                    onClick={this.handleFormSubmission}
                 >
-                  Login
-                </button>
-              </div>
-            </form>
+                    Login
+                </Button>
+        </Form>
           )}
         </div>
-      </div>
     )
   }
 }

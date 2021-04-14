@@ -4,6 +4,7 @@ import { listNotes } from '../graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from '../graphql/mutations';
 import { CustomSignIn } from './signin';
 import { AmplifySignOut } from '@aws-amplify/ui-react';
+import { CardGroup, Card, Button, FormControl, InputGroup } from 'react-bootstrap';
 
 const initialFormState = { name: '', description: '' }
 
@@ -38,7 +39,7 @@ const Home = (props) => {
   }
 
   async function createNote() {
-    if (!formData.name || !formData.description) return;
+    if (!formData.name ) return;
     await API.graphql({ query: createNoteMutation, variables: { input: formData } });
     if (formData.image) {
       const image = await Storage.get(formData.image);
@@ -57,36 +58,37 @@ const Home = (props) => {
   if (props.authState === 'signedIn') {
     return (
       <div className="Home">
-        <h1>My Notes App</h1>
-        <input
-          onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-          placeholder="Note name"
-          value={formData.name}
-        />
-        <input
-          onChange={e => setFormData({ ...formData, 'description': e.target.value})}
-          placeholder="Note description"
-          value={formData.description}
-        />
-        <input
-          type="file"
-          onChange={onChange}
-        />
-        <button onClick={createNote}>Create Note</button>
-        <div style={{marginBottom: 30}}>
+
+        <h1>My Music</h1>
+        <InputGroup className="mb-3">
+          <FormControl
+            style={{display:'inline-flex'}}
+            onChange={e => setFormData({ ...formData, 'name': e.target.value})}
+            placeholder="Song name"
+            value={formData.name}
+          />
+          <InputGroup.Append>
+            <Button 
+              onClick={createNote} 
+              style={{display:'inline-flex'}}>
+                Add Song
+            </Button>
+          </InputGroup.Append>
+        </InputGroup>
+
+        <CardGroup style={{marginBottom: 30, justifyContent:'center'}}>
         {
           notes.map(note => (
             <div key={note.id || note.name}>
-              <h2>{note.name}</h2>
-              <p>{note.description}</p>
-              <button onClick={() => deleteNote(note)}>Delete note</button>
-              {
-                note.image && <img src={note.image} style={{width: 400}} />
-              }
+              <Card style={{width: 400, height:300}}>
+                <Card.Img variant="top" src={note.image}  />
+                <Card.Title>{note.name}</Card.Title>
+                <Button className="float-right" style={{textAlign:'center'}} variant="secondary"  onClick={() => deleteNote(note)}>Delete</Button>
+              </Card>
             </div>
           ))
         }
-        </div>
+        </CardGroup>
         <AmplifySignOut />
       </div>
     );
